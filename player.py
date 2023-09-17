@@ -1,7 +1,7 @@
 import math
 import random
 
-class Player:
+class MyPlayer:
     def __init__(self, letter):
         # Initialize a Player with a specific letter ('X' or 'O')
         self.letter = letter
@@ -10,11 +10,11 @@ class Player:
         # Abstract method for making a move
         pass
 
-class HumanPlayer(Player):
+class MyHumanPlayer(MyPlayer):
     def __init__(self, letter):
         super().__init__(letter)
 
-    def get_move(self, game):
+    def make_move(self, game):
         valid_square = False
         val = None
         while not valid_square:
@@ -29,7 +29,7 @@ class HumanPlayer(Player):
         return val
 
 
-class RandomComputerPlayer(Player):
+class MyRandomComputerPlayer(MyPlayer):
     def __init__(self, letter):
         super().__init__(letter)
 
@@ -38,11 +38,11 @@ class RandomComputerPlayer(Player):
         square = random.choice(game.available_moves())
         return square
 
-class SmartComputerPlayer(Player):
+class MySmartComputerPlayer(MyPlayer):
     def __init__(self, letter):
         super().__init__(letter)
 
-    def get_move(self, game):
+    def make_move(self, game):
         if len(game.available_moves()) == 9:
             square = random.choice(game.available_moves())
         else:
