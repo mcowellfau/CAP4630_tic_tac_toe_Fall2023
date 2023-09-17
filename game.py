@@ -90,9 +90,27 @@ def play_game(game, x_player, o_player, print_game=True):
     if print_game:
         print('It\'s a tie!')
 
+def play_another_round():
+    # Function to ask if the user wants to play another round
+    while True:
+        choice = input("Do you want to play another round? (y/n): ")
+        if choice.lower() == 'y':
+            return True
+        elif choice.lower() == 'n':
+            return False
+        else:
+            print("Invalid choice. Please enter 'y' for yes or 'n' for no.")
+
 # Main execution block
 if __name__ == '__main__':
-    player_X = MySmartComputerPlayer('X')  # Create an instance of MySmartComputerPlayer with letter 'X'
-    player_O = MyHumanPlayer('O')  # Create an instance of MyHumanPlayer with letter 'O'
-    my_game = MyTicTacToe()  # Create an instance of MyTicTacToe
-    play_game(my_game, player_X, player_O, print_game=True)  # Start the game with specified players
+    play_again = True
+    while play_again:
+        player_X = MySmartComputerPlayer('X')  # Create an instance of MySmartComputerPlayer with letter 'X'
+        player_O = MyHumanPlayer('O')  # Create an instance of MyHumanPlayer with letter 'O'
+        my_game = MyTicTacToe()  # Create an instance of MyTicTacToe
+        play_game(my_game, player_X, player_O, print_game=True)  # Start the game with specified players
+
+        play_again = play_another_round()
+
+        if play_again:
+            my_game = MyTicTacToe()  # Reset the game if the user chooses to play again
