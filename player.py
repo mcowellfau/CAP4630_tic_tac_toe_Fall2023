@@ -18,7 +18,7 @@ class MyHumanPlayer(MyPlayer):
         valid_square = False
         val = None
         while not valid_square:
-            square = input(self.letter + '\'s turn. Input move (0-9): ')
+            square = input(self.letter + '\'s turn. Input move (0-8): ')
             try:
                 val = int(square)
                 if val not in game.available_moves():
@@ -52,7 +52,7 @@ class MySmartComputerPlayer(MyPlayer):
     def minimax(self, state, player):
         # Minimax algorithm to evaluate best move for the Smart Computer Player
         max_player = self.letter
-        other_player = 'O' if player == 'X' else 'X'
+        other_player = 'X' if player == 'O' else 'O'
 
         if state.current_winner == other_player:
             # If the other player has won, return a score that penalizes the current player

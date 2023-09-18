@@ -65,12 +65,12 @@ def play_game(game, x_player, o_player, print_game=True):
     if print_game:
         game.print_board_nums()
 
-    letter = 'X'
+    letter = 'O'  # Start with player 'O'
     while game.empty_squares():
-        if letter == 'O':
-            square = o_player.make_move(game)
-        else:
+        if letter == 'X':
             square = x_player.make_move(game)
+        else:
+            square = o_player.make_move(game)
 
         if game.make_move(square, letter):
 
@@ -83,7 +83,7 @@ def play_game(game, x_player, o_player, print_game=True):
                 if print_game:
                     print(letter + ' wins!')
                 return letter  # ends the loop and exits the game
-            letter = 'O' if letter == 'X' else 'X'  # switches player
+            letter = 'X' if letter == 'O' else 'O'  # switches player
 
         time.sleep(.8)
 
@@ -105,8 +105,8 @@ def play_another_round():
 if __name__ == '__main__':
     play_again = True
     while play_again:
-        player_X = MySmartComputerPlayer('X')  # Create an instance of MySmartComputerPlayer with letter 'X'
-        player_O = MyHumanPlayer('O')  # Create an instance of MyHumanPlayer with letter 'O'
+        player_X = MyHumanPlayer('X')  # User plays as 'X'
+        player_O = MySmartComputerPlayer('O')  # Computer plays as 'O'
         my_game = MyTicTacToe()  # Create an instance of MyTicTacToe
         play_game(my_game, player_X, player_O, print_game=True)  # Start the game with specified players
 
