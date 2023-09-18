@@ -108,6 +108,7 @@ if __name__ == '__main__':
         player_X = MyHumanPlayer('X')  # User plays as 'X'
         player_O = MySmartComputerPlayer('O')  # Computer plays as 'O'
         my_game = MyTicTacToe()  # Create an instance of MyTicTacToe
+        print("Welcome to Tic-Tac-Toe! Choose a square based on the printed board to begin. Get 3 in a row to win!")
         play_game(my_game, player_X, player_O, print_game=True)  # Start the game with specified players
 
         play_again = play_another_round()
